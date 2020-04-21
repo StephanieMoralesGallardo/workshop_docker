@@ -1,0 +1,51 @@
+# Workshop Docker
+
+## Instalación de Docker
+
+### Instalar Paquetes Necesarios
+
+> yum install -y yum-utils device-mapper-persistent-data lvm2
+
+### Configurar Repositorio Docker
+
+> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+### Instalar Docker
+
+> yum install docker-ce --nobest -y
+
+### Agregar usuario actual al grupo de docker
+
+> usermod -aG docker $(whoami)
+
+### Habilitar servicio docker
+
+> systemctl enable docker.service
+
+## Instalación Docker Compose
+
+### Instalar repositorio extra
+
+> yum install epel-release
+
+### Instalar Python pip
+
+> yum install -y platform-python-pip platform-python-devel gcc
+
+### Instalar Docker Compose
+
+> pip3 install docker-compose
+
+### Actualizar Python
+
+> yum upgrade python*
+
+## Instalación Portainer
+
+### Crear Volumen para Portainer
+
+> docker volume create portainer_data
+
+### Crear Contenedor Portainer
+
+> docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer

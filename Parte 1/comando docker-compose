@@ -1,0 +1,3 @@
+### Comando para crear stack en base a archivo yaml
+
+> docker-compose -f stack.yml up
